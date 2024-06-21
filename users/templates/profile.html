@@ -1,0 +1,24 @@
+
+
+<title>Profile</title>
+
+<center>
+    <div>
+        <img src="{{ user.profile_picture.url}}" width="200px">
+        <h2>{{ user.username }}</h2>
+        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+        {{ user.status_message }}<br><br><br><br>
+    </div>
+
+
+    {% if groups %}
+        <h1>Groups</h1>
+        {% for group in groups %}
+            <a href=""><img src="{{ group.group_picture.url }}" width="200px"></a><br>
+            <h3>{{ group.name }}</h3>
+        {% endfor %}
+    {% endif %}
+
+    <a href="{% url 'home:users-list' %}"><button>Home</button></a>
+    <a href="{% url 'conversation:delete-chat' user.pk %}"><button>Clear Chat</button></a>
+</center>

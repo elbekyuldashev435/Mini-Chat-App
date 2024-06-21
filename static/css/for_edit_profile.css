@@ -1,0 +1,103 @@
+/* Reset some default browser styles */
+body, h1, form, button {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Import a custom font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Center the content and give it some space */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    color: #333;
+}
+
+/* Style the container */
+center {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 350px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Header styles */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #444;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Form element styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input and textarea styles */
+form p {
+    margin-bottom: 15px;
+}
+
+/* Label and input styles */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #777;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: #007bff;
+}
+
+/* Submit button styles */
+button[type="submit"] {
+    padding: 10px 15px;
+    background: linear-gradient(135deg, #6d5acf, #1e88e5);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    align-self: center;
+    width: 50%;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #1e88e5, #6d5acf);
+    transform: scale(1.05);
+}
+
+/* Animation for container */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

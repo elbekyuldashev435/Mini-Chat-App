@@ -1,0 +1,14 @@
+
+
+<title>Edit Profile</title>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/for_edit_profile.css' %}">
+</head>
+<center>
+    <h1>Edit Profile</h1>
+    <form method="post">{% csrf_token %}
+        {{ edit_profile_form.as_p }}
+    <button type="submit">Edit</button>
+</form>
+</center>

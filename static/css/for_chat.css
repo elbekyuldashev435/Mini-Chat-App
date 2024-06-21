@@ -1,0 +1,149 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5; /* Light gray background */
+    margin: 0;
+    padding: 0;
+    color: #333; /* Dark gray text */
+}
+
+header {
+    background-color: #fff; /* White header */
+    color: #333; /* Dark gray text */
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #ddd; /* Light gray border */
+}
+
+header img {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+header .btn-home,
+header .send-file {
+    padding: 10px 15px;
+    background-color: #333; /* Dark gray button */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+header .btn-home:hover,
+header .send-file:hover {
+    background-color: #555; /* Slightly darker gray button on hover */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.message-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.message-item {
+    margin-bottom: 20px;
+}
+
+.sent, .received {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    word-wrap: break-word;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.sent {
+    align-self: flex-end;
+    background-color: #dcf8c6; /* Light green sent message */
+    border: 1px solid #8bc34a; /* Lighter green border */
+}
+
+.sent .timestamp {
+    align-self: flex-end;
+    font-size: 0.8em;
+    color: #888; /* Light gray timestamp */
+}
+
+.received {
+    align-self: flex-start;
+    background-color: #fff; /* White received message */
+    border: 1px solid #ddd; /* Light gray border */
+}
+
+.received .timestamp {
+    align-self: flex-start;
+    font-size: 0.8em;
+    color: #888; /* Light gray timestamp */
+}
+
+.chat-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 15px;
+    border-top: 2px solid #ddd; /* Light gray border */
+    background-color: #fff; /* White background */
+}
+
+.chat-form input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.chat-form button {
+    padding: 10px 20px;
+    background-color: #333; /* Dark gray button */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.chat-form button:hover {
+    background-color: #555; /* Slightly darker gray button on hover */
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #fff; /* White footer */
+    color: #888; /* Light gray text */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+footer button {
+    padding: 10px 20px;
+    background-color: #333; /* Dark gray button */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+footer button:hover {
+    background-color: #555; /* Slightly darker gray button on hover */
+}

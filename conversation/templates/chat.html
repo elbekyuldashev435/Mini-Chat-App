@@ -1,0 +1,156 @@
+
+<title>Chat</title>
+<head>
+    <title>Chat</title>
+</head>
+<header>
+    {% if messages %}
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    {% endif %}
+    <a class='header' href="{% url 'users:profile' user_profile.pk %}"><img src="{{ user_profile.profile_picture.url }}" width="90px"></a> {{ user_profile.first_name }} {{ user_profile.last_name }}
+    <br><br><a href="{% url 'home:users-list' %}"><button class="btn-home">Home</button></a>
+    <a href="{% url 'conversation:send-file' user_profile.pk %}"><button class='send-file'>Send File</button></a>
+
+</header>
+<style>
+    .btn-home{
+        padding: 10px 20px;
+        background-color: #035023;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .header {
+        display: flex;
+        padding: 10px;
+        background-color: #f1f0f0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .send-file {
+        margin-left: 1200px;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #035023;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    img.ex1 {
+        margin-left: 250px;
+    }
+    div.sent {
+        margin-left: 1000px;
+        max-width: 400px;
+        word-wrap: break-word;
+    }
+    div.sent-message {
+        margin-right: 110px;
+        background-color: #dcf8c6;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    div.received {
+        margin-left: 300px;
+        max-width: 400px;
+        word-wrap: break-word;
+    }
+    div.received-message {
+        margin-right: 20px;
+        background-color: #f1f0f0;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .sent-mes-link, .received a {
+        text-decoration: none;
+        color: #000;
+        display: block;
+        max-width: 100%;
+        word-wrap: break-word;
+    }
+
+        .chat-form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        padding: 10px;
+        border-top: 1px solid #ddd;
+        background-color: #f9f9f9;
+    }
+    .chat-form input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        margin-right: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    .chat-form button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .chat-form button:hover {
+        background-color: #45a049;
+    }
+</style>
+{% if all_messages %}
+    {% for message in all_messages %}
+        {% if message.sender == request.user %}
+            {% if message.message %}
+                <div class="sent">
+                    <a href="{% url 'users:my-profile' %}"><img src="{{ my_profile.profile_picture.url }}" width="60px" class="ex1"></a><br>
+                    <div class="sent-message">
+                        <a class="sent-mes-link" href="{% url 'conversation:choice-for-delete' message.pk %}">{{ message.message }}</a><br>
+                        {{ message.timestamp }}
+                    </div>
+                    <br><br><br>
+                </div>
+            {% endif %}
+            {% if message.file %}
+                <div class="sent">
+                    <a href="{% url 'users:my-profile' %}"><img src="{{ my_profile.profile_picture.url }}" width="60px" class="ex1"></a><br>
+                    <div class="sent-message">
+                        <a class="sent-mes-link" href="{{ message.file.url }}">Download file</a><br>
+                        <a href="{% url 'conversation:choice-for-delete' message.pk %}">{{ message.timestamp }}</a>
+                    </div>
+                </div>
+                <br><br>
+            {% endif %}
+        {% else %}
+            <div class="received">
+                <div class="received-message">
+                    {{ message.message }}<br><br>
+                    {{ message.timestamp }}
+                </div>
+                <br><br><br>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% else %}
+    <center>
+        <h1>No Messages Yet</h1>
+    </center>
+
+{% endif %}
+<center>
+    <form class='chat-form' method="post" enctype="multipart/form-data" action="{% url 'conversation:chat' user_profile.pk %}">
+        {% csrf_token %}
+        <input type="text" name="message" placeholder="Message...">
+        <button type="submit">Send</button>
+    </form>
+</center>

@@ -1,0 +1,13 @@
+
+
+
+<center>
+    <h1>Send File</h1>
+    <div class="send-file">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+    </form>
+    </div>
+</center>

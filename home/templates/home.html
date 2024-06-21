@@ -1,0 +1,35 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+</head>
+<style>
+    div.my-profile {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+    <header>
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}<br><br>
+            {% endfor %}
+        {% endif %}
+        <div class="my-profile">
+            <a href="{% url 'users:my-profile' %}"><img src="{{ my_profile.profile_picture.url }}" width="90px"></a>
+            {{ user.first_name }} {{ user.last_name }}<br><br>
+        </div>
+
+        {% if users.exists %}
+            {% for user in users %}
+                <a href="{% url 'conversation:chat' user.pk %}"><img src="{{ user.profile_picture.url }}" width="80px"></a>
+                {{ user.first_name }} {{ user.last_name }}<br><br>
+            {% endfor %}
+        {% endif %}
+    </header>
+</html>

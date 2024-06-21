@@ -1,0 +1,10 @@
+
+
+    <title>Registration</title>
+<center>
+    <h2>Registration</h2>
+    <form method="post">{% csrf_token %}
+        {{ registration_form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+</center>
