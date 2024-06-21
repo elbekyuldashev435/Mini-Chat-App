@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import ConversationView, choice_for_delete, DeleteMessageView, SendFileView, DeleteChatView, GroupMessageView
-
+from .views import CreateGroupView
 
 app_name = 'conversation'
 urlpatterns = [
@@ -11,4 +11,5 @@ urlpatterns = [
     path('delete-message/<int:pk>/', DeleteMessageView.as_view(), name='delete-message'),
 
     path('group/<int:pk>/', GroupMessageView.as_view(), name='group'),
+    path('create-group/', CreateGroupView.as_view(), name='create-group'),
 ]

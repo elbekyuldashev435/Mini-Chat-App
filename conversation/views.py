@@ -6,7 +6,7 @@ from django.contrib import messages
 
 from .models import PrivateMessage, Messages, Groups
 from users.models import Users
-from .forms import PrivateMessageForm, SendFileForm, SendGroupMessage
+from .forms import PrivateMessageForm, SendFileForm, SendGroupMessage, CreateGroupForm
 # Create your views here.
 
 
@@ -108,3 +108,19 @@ class GroupMessageView(View):
             message.save()
             messages.success(request, 'Message was sent')
         return redirect('conversation:group', pk=pk)
+
+
+class CreateGroupView(View):
+    def get(self, request):
+        form = CreateGroupForm()
+        return render(request, 'create_group.html', {'form': form})
+
+    def post(self, request):
+        form = CreateGroupForm(request.POST, request.FILES)
+        if form.is_valid():
+            group = form.save(commit=False)
+            group.owner = request.user
+            group.save()
+            messages.success(request, 'Group was created')
+            return redirect('users:my_profile')
+        return render(request, 'create_group.html', {'form': form})

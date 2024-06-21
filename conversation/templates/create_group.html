@@ -1,0 +1,12 @@
+
+
+<title>Group Create</title>
+<center>
+    <h1>Group Create</h1>
+    <form>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Create"/>
+    </form>
+    <a href="{% url 'home:users-list' %}"><button>Home</button></a>
+</center>

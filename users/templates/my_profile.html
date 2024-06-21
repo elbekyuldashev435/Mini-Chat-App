@@ -11,7 +11,7 @@
     </div>
 
         <a href="{% url 'users:edit-profile' user.pk %}"><button>Edit Profile</button></a>
-        <a href=""><button>Create Group</button></a>
+        <a href="{% url 'conversation:create-group' %}"><button>Create Group</button></a>
         <a href="{% url 'users:logout' %}"><button>Logout</button></a><br><br>
 
     {% if groups %}
